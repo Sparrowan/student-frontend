@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Student } from '../../services/student';
+import { StudentService } from '../../services/student';
 
 @Component({
   selector: 'app-export-report',
@@ -16,7 +16,7 @@ import { Student } from '../../services/student';
 export class ExportReport {
   message = '';
 
-  constructor(private studentService: Student) {}
+  constructor(private studentService: StudentService) {}
 
   export(format: 'excel' | 'csv' | 'pdf') {
     this.studentService.exportReport(format).subscribe({

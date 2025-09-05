@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Student } from '../../services/student';
+import { StudentService } from '../../services/student';
 
 @Component({
   selector: 'app-upload-csv',
@@ -16,7 +16,7 @@ export class UploadCsv {
   file: File | null = null;
   message = '';
 
-  constructor(private studentService: Student) {}
+  constructor(private studentService: StudentService) {}
 
   onFileSelected(event: any) {
     this.file = event.target.files[0];

@@ -6,6 +6,7 @@ import { GenerateExcel } from './components/generate-excel/generate-excel';
 import { UploadCsv } from './components/upload-csv/upload-csv';
 import { ExportReport } from './components/export-report/export-report';
 import { CommonModule } from '@angular/common';
+import { StudentListComponent } from './components/student-list/student-list';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     GenerateExcel,
     UploadCsv,
-    ExportReport
+    ExportReport,
+    StudentListComponent
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css']

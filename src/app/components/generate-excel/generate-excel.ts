@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Student } from '../../services/student';
+import { StudentService } from '../../services/student';
 
 @Component({
   selector: 'app-generate-excel',
@@ -20,7 +20,7 @@ export class GenerateExcel {
   count = 1000;
   message = '';
 
-  constructor(private studentService: Student) {}
+  constructor(private studentService: StudentService) {}
 
   generateExcel() {
     this.studentService.generateExcel(this.count).subscribe({

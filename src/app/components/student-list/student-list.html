@@ -1,0 +1,74 @@
+<!-- src/app/components/student-list/student-list.component.html -->
+<div class="p-4">
+  <div class="flex space-x-4 mb-4">
+    <input
+      type="number"
+      placeholder="Search by ID"
+      [(ngModel)]="searchId"
+      class="border p-2"
+    />
+    <select [(ngModel)]="selectedClass" class="border p-2">
+      <option value="">All Classes</option>
+      <option *ngFor="let cls of classes" [value]="cls">{{ cls }}</option>
+    </select>
+    <button (click)="loadStudents()" class="bg-blue-500 text-white px-4 py-2 rounded">
+      Search / Filter
+    </button>
+  </div>
+
+  <table class="table-auto border-collapse border border-gray-300 w-full">
+    <thead>
+      <tr>
+        <th class="border px-2 py-1">ID</th>
+        <th class="border px-2 py-1">First Name</th>
+        <th class="border px-2 py-1">Last Name</th>
+        <th class="border px-2 py-1">DOB</th>
+        <th class="border px-2 py-1">Class</th>
+        <th class="border px-2 py-1">Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of students">
+        <td class="border px-2 py-1">{{ s.id }}</td>
+        <td class="border px-2 py-1">{{ s.firstName }}</td>
+        <td class="border px-2 py-1">{{ s.lastName }}</td>
+        <td class="border px-2 py-1">{{ s.dob }}</td>
+        <td class="border px-2 py-1">{{ s.studentClass }}</td>
+        <td class="border px-2 py-1">{{ s.score }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Simple pagination -->
+  <div class="mt-4 flex justify-between">
+    <button
+      (click)="onPageChange(page - 1)"
+      [disabled]="page === 0"
+      class="bg-gray-300 px-3 py-1 rounded"
+    >
+      Prev
+    </button>
+    <span>Page {{ page + 1 }} of {{ (totalElements / size) | number:'1.0-0' }}
+</span>
+    <button
+      (click)="onPageChange(page + 1)"
+      [disabled]="(page + 1) * size >= totalElements"
+      class="bg-gray-300 px-3 py-1 rounded"
+    >
+      Next
+    </button>
+  </div>
+
+  <!-- Export buttons -->
+  <div class="mt-4 space-x-2">
+    <button (click)="export('excel')" class="bg-green-500 text-white px-4 py-2 rounded">
+      Export Excel
+    </button>
+    <button (click)="export('csv')" class="bg-yellow-500 text-white px-4 py-2 rounded">
+      Export CSV
+    </button>
+    <button (click)="export('pdf')" class="bg-red-500 text-white px-4 py-2 rounded">
+      Export PDF
+    </button>
+  </div>
+</div>
